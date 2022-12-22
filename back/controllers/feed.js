@@ -1,8 +1,11 @@
 const { validationResult } = require('express-validator')
 
 const Post = require('../models/post')
+const io = require('../socket')
 
 exports.getPosts = (req, res, next) => {
+  console.log('tamam')
+  io.getIO().emit('post', { action: 'create', post: 'haha' })
   res.status(200).json({
     posts: [{
       _id: 1, 
