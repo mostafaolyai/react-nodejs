@@ -3,9 +3,9 @@ const { validationResult } = require('express-validator')
 const Post = require('../models/post')
 const io = require('../socket')
 
-exports.getPosts = (req, res, next) => {
+exports.getPosts = async (req, res, next) => {
   console.log('tamam',io.getIO().emit('postss', { action: 'create', post: 'haha' }))
-  
+  const posts = await Post.findOne({_id:1});
   res.status(200).json({
     posts: [{
       _id: 1, 
