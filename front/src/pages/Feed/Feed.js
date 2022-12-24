@@ -36,11 +36,12 @@ class Feed extends Component {
       .catch(this.catchError);
 
     this.loadPosts();
-
     const socket = openSocket('http://localhost:8080')
-    socket.on('post', data => {
+    console.log('socket',socket.on('postss', data => {
+      if(!data)console.log('no')
       console.log('data',data)
-    })
+    }))
+    
   }
 
   loadPosts = direction => {
